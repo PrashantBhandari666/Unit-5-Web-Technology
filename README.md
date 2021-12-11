@@ -77,9 +77,13 @@ INSERT INTO table_name (column1, column2,...) VALUES (value1, value3,...);
 
 Example:
 ```SQL
-INSERT INTO student (StudentID, FirstName, LastName, RollNo, City) VALUES (1, 'Prashant', 'Bhandari', 39, 'Birtamode');
+INSERT INTO student (StudentID, FirstName, LastName, RollNo, City) 
+VALUES (1, 'Prashant', 'Bhandari', 39, 'Birtamode');
+```
+```SQL
 INSERT INTO student VALUES (4, 'Ram', 'Dahal', 67, 'Chandragadi');
 ```
+
 Data can be entered into MySQL tables by executing SQL ``INSERT`` statement through PHP function ``mysql_query()``.
 
 Example program:
@@ -147,7 +151,12 @@ if (mysqli_num_rows($result) > 0) {
   // output data of each row
   while($row = mysqli_fetch_assoc($result))
   {
-    echo "Id =". $row['StudentID']. " Name =". $row['FirstName']. $row['LastName'] ." Rollno = ".$row['RollNo']. " City=" .$row['City'];
+    $id = $row['StudentID'];
+    $fn = $row['FirstName'];
+    $ln = $row['LastName'];
+    $rn = $row['RollNo'];
+    $city = $row['City'];
+    echo "ID = $id Name  = $fn $ln Rollno = $rn City = $city";
     echo "<br>";
   }
 } 
@@ -168,11 +177,13 @@ The ``UPDATE`` statement is used to update existing records in a table:
 
 Syntax:
 ```SQL
-UPDATE table_name SET column1=value1, column2=value2,... WHERE some_column=some_value  
+UPDATE table_name SET column1=value1, column2=value2,... 
+WHERE some_column=some_value  
 ```
 
 ```SQL
-UPDATE student SET FirstName="Yugesh" WHERE StudentID=2;
+UPDATE student SET FirstName="Yugesh" 
+WHERE StudentID=2;
 ```
 
 Example Program:
@@ -195,7 +206,8 @@ $sql = "UPDATE student SET FirstName='Ram Bhadadur' WHERE StudentID=2;";
 if(mysqli_query($conn, $sql))
 {
     echo "Records updated successfully.";
-} else
+}
+else
 {
     echo "ERROR: Could not able to execute $sql. " . mysqli_error($conn);
 }
