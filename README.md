@@ -274,25 +274,25 @@ Suppose you want to allow the website to the IP addresses in the range of ``123.
 
 ```PHP
 <?php
-	$allowed_ip = array("123", "121", "0");
-	$REMOTE_ADDR = $_SERVER["REMOTE_ADDR"];
-	$remote_ip = explode(".", $REMOTE_ADDR);
-	$permitted = 1;
-	for($i = 0; $i < sizeof($allowed_ip); $i++) 
-    {
-		if($remote_ip[$i] != $allowed_ip[$i])
-        {
-			$permitted = 0;
-		}
-	}
-	if($permitted == 1) 
-    {
-		echo 'Welcome, You are authorized to access this page.';
-	}
-	else
-    {
-		echo 'Access Denied';
-	}
+$allowed_ip = array("123", "121", "0");
+$REMOTE_ADDR = $_SERVER["REMOTE_ADDR"];
+$remote_ip = explode(".", $REMOTE_ADDR);
+$permitted = 1;
+for($i = 0; $i < sizeof($allowed_ip); $i++) 
+{
+ if($remote_ip[$i] != $allowed_ip[$i])
+ {
+  $permitted = 0;
+ }
+}
+if($permitted == 1) 
+{
+ echo 'Welcome, You are authorized to access this page.';
+}
+else
+{
+ echo 'Access Denied';
+}
 ?>
 ```
 >replace the ``$allowed_ip`` array values with your allowed IP address. If you want to restrict the page to only one IP address, then pass all the four values of IP address as four elements in ``$allowed_ip`` array.
